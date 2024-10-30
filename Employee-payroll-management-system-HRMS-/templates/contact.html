@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "image/bg6.jpg" %}');
+            background-size: cover; 
+        }
+        .container {
+            display: inline-block;
+            text-align: left;
+            margin-top: 50px;
+            padding: 70px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .back-button {
+            align-items: center;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .backbutton{
+            align-items: center;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Contact Information</h2>
+        <div class="section">
+            <h3 style="color: #333;">HR</h3>
+            <p style="color: #666;">Phone: 123-456-7890</p>
+            <p style="color: #666;">Email: hr@example.com</p>
+        </div>
+
+        <div class="section">
+            <h3 style="color: #333;">Manager</h3>
+            <p style="color: #666;">Phone: 987-654-3210</p>
+            <p style="color: #666;">Email: manager@example.com</p>
+        </div>
+
+        <div class="section">
+            <h3 style="color: #333;">Management</h3>
+            <p style="color: #666;">Phone: 111-222-3333</p>
+            <p style="color: #666;">Email: management@example.com</p>
+        </div>
+
+        <div class="section">
+            <h3 style="color: #333;">Service</h3>
+            <p style="color: #666;">Phone: 555-444-6666</p>
+            <p style="color: #666;">Email: service@example.com</p>
+        </div>
+        <div class="backbutton">
+            <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

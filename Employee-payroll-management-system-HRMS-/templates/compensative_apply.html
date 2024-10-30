@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Compensative Leave</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "image/bg5.avif" %}');
+            background-size: cover; 
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .leave-form-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'header.html' %} 
+
+    <div>
+        <marquee behavior="scroll" direction="left"><h2>"To empower individuals through innovative solutions that inspire growth and connection. We envision a future where technology enhances everyday lives."</h2></marquee>
+        
+    </div>
+    <div>
+        <marquee behavior="scroll" direction="left"><h2>"Please avoid taking unnecessary leave."</h2></marquee>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="leave-form-container">
+            <h1 align="center">Compensative_apply</h1>
+            <form action="{% url 'compensative_apply' %}" method="POST">
+                {% csrf_token %}
+                
+                <label for="work_date">Date Worked on Holiday:</label>
+                <input type="date" id="work_date" name="work_date" required>
+                
+                <label for="compensative_date">Compensative Leave Date:</label>
+                <input type="date" id="compensative_date" name="compensative_date" required>
+
+                <label for="reason">Reason for Compensative Leave:</label>
+                <textarea id="reason" name="reason" rows="4" required></textarea>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

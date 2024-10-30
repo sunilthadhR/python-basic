@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer a Friend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "image/bg5.avif" %}');
+            background-size: cover; 
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .refer-form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div>
+        <marquee behavior="scroll" direction="left"><h2>"Hey friends! If you know anyone looking for [job/service], please refer me!"</h2></marquee>
+    </div>
+    
+    <!-- Main container to center the form -->
+    <div class="main-container">
+        <div class="refer-form-container">
+            <h2>Refer a Friend</h2>
+            <form action="{% url 'Refer_Friend' %}" method="POST">
+                {% csrf_token %}
+                <label for="your_name">Your Name:</label>
+                <input type="text" id="your_name" name="your_name" required>
+
+                <label for="friend_name">Friend's Name:</label>
+                <input type="text" id="friend_name" name="friend_name" required>
+
+                <label for="friend_mobile">Friend's Mobile Number:</label>
+                <input type="tel" id="friend_mobile" name="friend_mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Write a message (optional)"></textarea>
+
+                <button type="submit" class="submit-btn">Send Referral</button>
+            </form>
+            <p class="note">Your friend will receive a message with your referral.</p>
+        </div>
+    </div>
+</body>
+</html>

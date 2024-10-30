@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .popup-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .popup-container h2 {
+            color: red;
+            margin-bottom: 20px;
+        }
+        .popup-container p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .popup-container a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .popup-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="popup-container">
+        {% if success %}
+        <h2>Success</h2>
+        <p>{{ success|default:"An error occurred. Please try again." }}</p>
+        <a href="{% url 'home' %}">Back to Login</a>
+        {% elif error %}
+        <h2>Error</h2>
+        <p>{{ error|default:"An error occurred. Please try again." }}</p>
+        <a href="{% url 'change_pass' %}">Change Password</a>
+        {% elif message %}
+        <h2>Error</h2>
+        <p>{{ message |default:"An error occurred. Please try again." }}</p>
+        <a href="{% url 'home' %}">Back to Home</a>
+        {% elif ApplySuccess %}
+        <h2>Success</h2>
+        <p>{{ ApplySuccess |default:"An error occurred. Please try again." }}</p>
+        <a href="{% url 'employee_homepage' %}">Back to Home</a>
+        {% endif %}
+    </div>
+</body>
+</html>

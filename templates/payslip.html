@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payslip Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "image/bg5.avif" %}');
+            background-size: cover; 
+        }
+        .container {
+            margin: 20px;
+        }
+        .payslip-details {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .payslip-details h2 {
+            color: #333;
+            text-align: center;
+        }
+        .payslip-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .payslip-table th, .payslip-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .payslip-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .payslip-summary {
+            margin-top: 20px;
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div>
+        <marquee behavior="scroll" direction="left"><h2>"Reminder: Salary will be processed on the last working day of the month. Thank you!"</h2></marquee>
+    </div>
+    
+    <div class="container">
+        <div class="payslip-details">
+            <h2>Pay Period: {{ pay_period }}</h2>
+            <table class="payslip-table">
+                <tr>
+                    <th>Earnings</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>Basic Salary</td>
+                    <td>{{ basic_salary }}</td>
+                </tr>
+                <tr>
+                    <td>HRA</td>
+                    <td>{{ hra }}</td>
+                </tr>
+                <tr>
+                    <td>Other Allowances</td>
+                    <td>{{ other_allowances }}</td>
+                </tr>
+                <tr>
+                    <th>Deductions</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>{{ tax }}</td>
+                </tr>
+                <tr>
+                    <td>Provident Fund</td>
+                    <td>{{ pf }}</td>
+                </tr>
+            </table>
+
+            <div class="payslip-summary">
+                Net Salary: {{ net_salary }}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

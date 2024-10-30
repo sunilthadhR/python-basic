@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url('{% static "image/bg1.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        flex-direction: column;
+        color: #fff;
+        }
+
+        .title {
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            padding: 40px;
+            height: 80vh; 
+            max-width: 1500px; 
+        }
+        .main_data {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .main_data h2 {
+            text-align: center;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-left: auto;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .forgot-password {
+            text-align: right;
+            display: block;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #3498db;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'admin_check' %}">Admin</a></li>
+                <li><a href="{% url 'contact' %}">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="title">
+        <h1>GS Solution HRMS</h1>
+    </div>
+    <div class="title">
+        <marquee behavior="scroll" direction="left">"To empower individuals through innovative solutions that inspire growth and connection. We envision a future where technology enhances everyday lives."</marquee>
+    </div>
+    <div class="container">
+        <div class="main_data">
+            <h2>About Our Company</h2><br><br>
+            <p>We are a leading provider of payroll management solutions, offering reliable and efficient services to ensure that employee salaries and benefits are accurately calculated and distributed on time.</p><br><br>
+            <p><strong>Company Name:</strong> GS Payroll Solutions</p><br><br>
+            <p><strong>Founded:</strong> 2010</p><br><br>
+            <p><strong>Location:</strong> 1234 Payroll Ave, Suite 100, Finance City, FC 56789</p><br><br>
+            <p><strong>Contact:</strong> info@gssolution.com | (123) 456-7890</p>
+        </div>
+        <div class="login-container">
+            <h2>Employee Login</h2>
+            <form action="{% url 'employee_login' %}" method="post">
+                {% csrf_token %}
+                <label for="login_id">Login ID:</label>
+                <input type="text" id="login_id" name="login_id" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <a href="{% url 'forget_password' %}" class="forgot-password">Forgot Password?</a>
+                <input type="submit" value="Sign In">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
